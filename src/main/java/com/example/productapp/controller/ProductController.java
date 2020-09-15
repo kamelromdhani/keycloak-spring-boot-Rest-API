@@ -3,7 +3,7 @@ package com.example.productapp.controller;
 import com.example.productapp.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +16,7 @@ public class ProductController {
     private ProductService productService;
 
 	@GetMapping(path = "/products")
-	public List<String> getProducts(){
+	public List<String> getProducts(@RequestHeader("Authorization") String token){
 		return productService.getProducts();
 	}
 
